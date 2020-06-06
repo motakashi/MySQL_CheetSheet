@@ -75,6 +75,7 @@ create table users (
   -- score float not null
   score float default 0.0
   rank enum('gold', 'silver', 'bronze')
+  coins set('gold', 'silver', 'bronze')
 );
 ```
 

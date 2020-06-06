@@ -122,3 +122,13 @@ alter table users change name user_name varchar(80) default 'nobody';
 # テーブル名の変更
 alter table users rename persons;
 ```
+
+### レコードの更新
+```
+update users set name = 'sasaki', score = 2.9 where name = 'tanaka';
+```
+
+### レコードの削除
+```
+delete from users where score < 5.0;
+```

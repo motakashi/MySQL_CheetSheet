@@ -74,6 +74,7 @@ create table users (
   name varchar(20) unique,
   -- score float not null
   score float default 0.0
+  rank enum('gold', 'silver', 'bronze')
 );
 ```
 

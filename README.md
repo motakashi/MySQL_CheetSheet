@@ -66,3 +66,17 @@ mysql> desc users;
 
 mysql> drop table users;
 ```
+
+### テーブル作成
+```
+create table users (
+  id int unsigned,
+  name varchar(20),
+  score float
+);
+```
+
+### データ挿入
+```
+insert into users (id, name, score) values (1, 'motakashi', 2.0);
+```

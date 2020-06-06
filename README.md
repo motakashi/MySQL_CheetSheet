@@ -283,3 +283,10 @@ show tables;
 # viewの設定内容を確認したい場合 (AS以降が設定内容になる)
 show create view top3;
 ```
+
+### トランザクション(一連の処理として実行したい場合)
+```
+start transaction;
+(処理に問題がなければ)commit;
+(処理に問題があれば)rollback;
+```

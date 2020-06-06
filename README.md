@@ -239,8 +239,14 @@ select count(distinct team) from users_with_team;
 
 ### グルーピングによる集計(group by, having)
 ```
+# グルーピング
 select sum(score), team from users_with_team group by team;
 select sum(score), team from users_with_team group by team desc;
+
+# グルーピング対象のデータの条件を追加したい場合
 select sum(score), team from users_with_team group by team having sum(score) > 10.0;
+
+# グルーピング対象以外のカラムのデータで条件を追加したい場合
 select sum(score), team from users_with_team where id > 3 group by team;
 ```
+

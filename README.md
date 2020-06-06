@@ -132,3 +132,17 @@ update users set name = 'sasaki', score = 2.9 where name = 'tanaka';
 ```
 delete from users where score < 5.0;
 ```
+
+### 数値計算
+```
+update users set score = score * 1.2 where id % 2 = 0;
+
+select round(5.355); -- 5
+select round(5.355, 1); -- 5.4
+select floor(5.833); -- 5
+select ceil(5.238); -- 6
+
+# ランダム表示
+select rand();
+select * from users order by rand() limit 1;
+```

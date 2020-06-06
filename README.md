@@ -304,3 +304,14 @@ explain select * from users where score > 5.0;
 # インデックスの削除
 alter table <テーブル名> drop index <インデックス名>;
 ```
+
+### 2つのテーブルに共通するデータを取り出す（内部結合）
+```
+select * from <テーブルA> inner join <テーブルB> on <テーブルA>.id = <テーブルB>.post_id;
+# inner joinのinnerは省略できます
+select * from posts join comments on posts.id = comments.post_id;
+
+select posts.id, posts.title, posts.body, comments.body from posts join comments on posts.id = comments.post_id;
+# どちらかにしかないカラム名は、テーブル名を省略できます
+select posts.id, title, posts.body, comments.body from posts join comments on posts.id = comments.post_id;
+```

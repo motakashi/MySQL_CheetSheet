@@ -43,7 +43,7 @@ mysql> drop user user@localhost;
 ```
 # パターン1
 [vagrant@localhost mysql_lessons]$ mysql -u root < create_myapp.sql
-[vagrant@localhost mysql_lessons]$ mysql -u fileuser -p anotherpassword
+[vagrant@localhost mysql_lessons]$ mysql -u anotherfile_database -p anotherpassword
 mysql> quit;
 
 # パターン2

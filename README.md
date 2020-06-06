@@ -217,3 +217,22 @@ from users;
 # テーブル構造のみコピー
 create table users_empty like users;
 ```
+
+### データ集計
+```
+# 行数確認
+select count(*) from users_with_team;
+# カラム内にデータがある行数を確認
+select count(score) from users_with_team;
+
+# カラムのデータの合計、最小値、最大値、平均
+select sum(score) from users_with_team;
+select min(score) from users_with_team;
+select max(score) from users_with_team;
+select avg(score) from users_with_team;
+
+# カラムの重複データを省いたデータを表示
+select distinct team from users_with_team;
+# カラムの重複データを省いたデータの数を表示
+select count(distinct team) from users_with_team;
+```

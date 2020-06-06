@@ -86,3 +86,18 @@ insert into users (id, name, score) values (1, 'motakashi', 2.0);
 ```
 select * from users;
 ```
+
+### テーブル構造の変更
+```
+# カラムの追加
+alter table users add column email varchar(255) after name;
+
+# カラムの削除
+alter table users drop column score;
+
+# カラムの設定の変更
+alter table users change name user_name varchar(80) default 'nobody';
+
+# テーブル名の変更
+alter table users rename persons;
+```

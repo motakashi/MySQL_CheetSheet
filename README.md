@@ -315,3 +315,14 @@ select posts.id, posts.title, posts.body, comments.body from posts join comments
 # どちらかにしかないカラム名は、テーブル名を省略できます
 select posts.id, title, posts.body, comments.body from posts join comments on posts.id = comments.post_id;
 ```
+
+### どちらかのテーブルにあるデータをベースにデータを結合する（外部結合）
+```
+# leftの場合はテーブルAにあるデータを軸に結合する
+select * from <テーブルA> left outer join <テーブルB> on <テーブルA>.id = <テーブルB>.post_id;
+# outer joinのouterは省略できます
+
+select * from posts left join comments on posts.id = comments.post_id;
+# rightの場合はテーブルBにあるデータを軸に結合する
+-- select * from <テーブルA> right outer join <テーブルB> on <テーブルA>.id = <テーブルB>.post_id;
+```

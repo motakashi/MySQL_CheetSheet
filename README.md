@@ -290,3 +290,14 @@ start transaction;
 (処理に問題がなければ)commit;
 (処理に問題があれば)rollback;
 ```
+
+### インデックスの作成
+```
+alter table <テーブル名> add index <インデックス名> (<インデックスをつけたいカラム名>);
+
+# インデックスの確認
+-- show index from <テーブル名>;
+
+# selectでインデックスがきいているかの確認
+explain select * from users where score > 5.0;
+```

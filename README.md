@@ -70,13 +70,19 @@ mysql> drop table users;
 ### テーブル作成
 ```
 create table users (
-  id int unsigned,
-  name varchar(20),
-  score float
+  id int unsigned primary key auto_increment,
+  name varchar(20) unique,
+  -- score float not null
+  score float default 0.0
 );
 ```
 
 ### データ挿入
 ```
 insert into users (id, name, score) values (1, 'motakashi', 2.0);
+```
+
+### データ表示
+```
+select * from users;
 ```

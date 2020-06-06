@@ -85,6 +85,10 @@ insert into users (id, name, score) values (1, 'motakashi', 2.0);
 ### データ表示
 ```
 select * from users;
+
+# 条件抽出
+select * from users where name = 'taguchi' or name = 'fkoji';
+select * from users where name in ('taguchi', 'fkoji');
 ```
 
 ### テーブル構造の変更

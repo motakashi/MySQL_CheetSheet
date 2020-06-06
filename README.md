@@ -36,9 +36,5 @@ mysql> quit;
 ```
 [vagrant@localhost mysql_lessons]$ mysql -u root
 
-mysql> drop database mydb01;
-
-mysql> drop database mydb02;
-
 mysql> drop user user@localhost;
 ```

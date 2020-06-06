@@ -89,6 +89,7 @@ select * from users;
 # 条件抽出
 select * from users where name = 'taguchi' or name = 'fkoji';
 select * from users where name in ('taguchi', 'fkoji');
+select * from users where name like '_a%';
 ```
 
 ### テーブル構造の変更

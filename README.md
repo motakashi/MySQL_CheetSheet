@@ -50,3 +50,19 @@ mysql> quit;
 [vagrant@localhost mysql_lessons]$ mysql -u root
 mysql> \. ./anotherfile_database.sql
 ```
+
+### テーブル操作
+```
+[vagrant@localhost mysql_lessons]$ mysql -u myapp_user -p
+
+mysql> use myapp;
+
+mysql> \. ./myapp.sql
+
+mysql> show tables;
+
+# テーブル構造の確認
+mysql> desc users;
+
+mysql> drop table users;
+```

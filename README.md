@@ -236,3 +236,11 @@ select distinct team from users_with_team;
 # カラムの重複データを省いたデータの数を表示
 select count(distinct team) from users_with_team;
 ```
+
+### グルーピングによる集計(group by, having)
+```
+select sum(score), team from users_with_team group by team;
+select sum(score), team from users_with_team group by team desc;
+select sum(score), team from users_with_team group by team having sum(score) > 10.0;
+select sum(score), team from users_with_team where id > 3 group by team;
+```

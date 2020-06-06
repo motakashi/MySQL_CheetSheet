@@ -42,11 +42,11 @@ mysql> drop user user@localhost;
 ### 外部ファイルからのコマンド実行
 ```
 # パターン1
-[vagrant@localhost mysql_lessons]$ mysql -u root < create_myapp.sql
+[vagrant@localhost mysql_lessons]$ mysql -u root < anotherfile_database.sql
 [vagrant@localhost mysql_lessons]$ mysql -u anotherfile_database -p anotherpassword
 mysql> quit;
 
 # パターン2
 [vagrant@localhost mysql_lessons]$ mysql -u root
-mysql> \. ./create_myapp.sql
+mysql> \. ./anotherfile_database.sql
 ```

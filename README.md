@@ -150,7 +150,7 @@ select rand();
 select * from users order by rand() limit 1;
 ```
 
-## 文字列操作
+### 文字列操作
 ```
 select length('Hello'); -- 5
 select substr('Hello', 2); -- ello
@@ -162,4 +162,36 @@ select concat('hello', 'world'); -- helloworld
 # 文字列でソート
 select length(name), name from users order by length(name);
 select length(name) as len, name from users order by len;
+```
+
+### データの内容によってselectの表示をわかりやすく見せる(if,case)
+```
+select
+  name,
+  score,
+  if (score > 5.0, 'OK', 'NG') as result
+from
+  users;
+
+select
+  name,
+  score,
+  case floor(score) % 2
+    when 0 then 'even'
+    when 1 then 'odd'
+    else null
+  end as type
+from
+  users;
+
+select
+  name,
+  score,
+  case
+    when score > 8.0 then 'Team-A'
+    when score > 6.0 then 'Team-B'
+    else 'Team-C'
+  end as team
+from
+  users;
 ```

@@ -268,3 +268,18 @@ from
   from users) as t 
 group by t.team;
 ```
+
+### 抽出条件の保存(view)
+```
+# 条件の保存
+create view top3 as select * from users order by score desc limit 3;
+
+# viewの実行
+select * from top3;
+
+# viewの確認
+show tables;
+
+# viewの設定内容を確認したい場合 (AS以降が設定内容になる)
+show create view top3;
+```

@@ -85,6 +85,7 @@ insert into users (id, name, score) values (1, 'motakashi', 2.0);
 ### データ表示
 ```
 select * from users;
+select name as user, score as point from users order by point desc;
 
 # 条件抽出
 select * from users where name = 'taguchi' or name = 'fkoji';
@@ -145,4 +146,18 @@ select ceil(5.238); -- 6
 # ランダム表示
 select rand();
 select * from users order by rand() limit 1;
+```
+
+## 文字列操作
+```
+select length('Hello'); -- 5
+select substr('Hello', 2); -- ello
+select substr('Hello', 2, 3); -- ell
+select upper('Hello'); -- HELLO
+select lower('Hello'); -- hello
+select concat('hello', 'world'); -- helloworld
+
+# 文字列でソート
+select length(name), name from users order by length(name);
+select length(name) as len, name from users order by len;
 ```

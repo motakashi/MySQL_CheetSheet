@@ -89,7 +89,23 @@ select * from users;
 # 条件抽出
 select * from users where name = 'taguchi' or name = 'fkoji';
 select * from users where name in ('taguchi', 'fkoji');
+select * from users where name = 'taguchi';
+select * from users where name like 't%';
+select * from users where name like '%a%';
+select * from users where name like '%a';
+select * from users where name like 'T%';
+select * from users where name like binary 'T%';
+select * from users where name like '______';
 select * from users where name like '_a%';
+
+# 並び換え
+select * from users order by score;
+select * from users where score is not null order by score desc;
+
+# 件数制限
+select * from users limit 3;
+select * from users limit 3 offset 3;
+select * from users order by score desc limit 3;
 ```
 
 ### テーブル構造の変更

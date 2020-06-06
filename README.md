@@ -195,3 +195,25 @@ select
 from
   users;
 ```
+
+### 抽出結果をテーブルにする
+```
+# 単純なselectによるテーブル作成
+create table users_copy select * from users;
+
+# テーブル構造作成
+create table users_with_team as
+select
+  id,
+  name,
+  score,
+  case
+    when score > 8.0 then 'Team-A'
+    when score > 6.0 then 'Team-B'
+    else 'Team-C'
+  end as team
+from users;
+
+# テーブル構造のみコピー
+create table users_empty like users;
+```

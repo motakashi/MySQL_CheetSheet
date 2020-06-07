@@ -380,3 +380,13 @@ create trigger posts_update_trigger after update on posts for each row
 //
 delimiter ;
 ```
+
+### データベースのdump
+```
+# バックアップデータの作成
+[vagrant@localhost mysql_lessons]$ mysqldump -u myapp_user -p myapp > myapp.backup.sql
+
+# リストア
+[vagrant@localhost mysql_lessons]$ mysql -u myapp_user -p myapp
+mysql> \. ./myapp.backup.sql
+```

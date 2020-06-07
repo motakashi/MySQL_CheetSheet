@@ -97,6 +97,9 @@ select name as user, score as point from users order by point desc;
 # 表示を見やすくする
 select * from users \G;
 
+# 日付表示
+select created, date_format(created, '%Y/%m/%d %T') from posts;
+
 # 条件抽出
 select * from users where name = 'taguchi' or name = 'fkoji';
 select * from users where name in ('taguchi', 'fkoji');
@@ -108,6 +111,9 @@ select * from users where name like 'T%';
 select * from users where name like binary 'T%';
 select * from users where name like '______';
 select * from users where name like '_a%';
+
+# 時間条件
+select * from posts where created > '2017-01-01';
 
 # 並び換え
 select * from users order by score;
@@ -137,6 +143,13 @@ alter table users rename persons;
 ### レコードの更新
 ```
 update users set name = 'sasaki', score = 2.9 where name = 'tanaka';
+
+# 日付の更新
+update posts set created = '2016-12-31 10:00:00' where id = 2;
+
+# 日付計算の上、更新する
+update posts set updated = date_add(updated, interval 14 day) where id = 2;
+update posts set updated = date_add(updated, interval 2 week) where id = 2;
 ```
 
 ### レコードの削除

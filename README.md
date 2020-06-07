@@ -390,3 +390,19 @@ delimiter ;
 [vagrant@localhost mysql_lessons]$ mysql -u myapp_user -p myapp
 mysql> \. ./myapp.backup.sql
 ```
+
+### selectした情報同士を結合する（union）
+```
+# データの重複は落とす
+select name, address from addressnote union select friendname, address from friendlist;
+
+# データの重複も含める
+select name, address from addressnote union all select friendname, address from friendlist;
+
+# 条件を含めたselectのUnion
+(SELECT ... FROM table_name1 LIMIT n) UNION (SELECT ... FROM table_name2 ORDER BY col_name LIMIT n);
+
+# Unionしたものを並び換える
+(SELECT ... FROM table_name1 LIMIT n) UNION (SELECT ... FROM table_name2 ORDER BY col_name LIMIT n) ORDER BY col_name LIMIT n;
+```
+

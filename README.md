@@ -89,6 +89,9 @@ insert into users (id, name, score) values (1, 'motakashi', 2.0);
 select * from users;
 select name as user, score as point from users order by point desc;
 
+# 表示を見やすくする
+select * from users \G;
+
 # 条件抽出
 select * from users where name = 'taguchi' or name = 'fkoji';
 select * from users where name in ('taguchi', 'fkoji');
@@ -324,5 +327,14 @@ select * from <テーブルA> left outer join <テーブルB> on <テーブルA>
 
 select * from posts left join comments on posts.id = comments.post_id;
 # rightの場合はテーブルBにあるデータを軸に結合する
--- select * from <テーブルA> right outer join <テーブルB> on <テーブルA>.id = <テーブルB>.post_id;
+select * from <テーブルA> right outer join <テーブルB> on <テーブルA>.id = <テーブルB>.post_id;
 ```
+
+### テーブル間の不整合データを防ぐ（外部制約キー）
+```
+alter table <制約をつけたいテーブル名> add constraint fk_comments foreign key (<制約をつけたいカラム名>) references <紐づけるテーブル名> (<紐づけるカラム名>);
+
+# 外部制約状態の確認
+SHOW CREATE TABLE <テーブル名>;
+```
+

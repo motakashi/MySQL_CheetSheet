@@ -82,6 +82,9 @@ create table users (
 ### データ挿入
 ```
 insert into users (id, name, score) values (1, 'motakashi', 2.0);
+
+# auto_incrementのカラムがあるデータの挿入方法
+insert into comments (post_id, body) values (last_insert_id(), 'first comment for new post');
 ```
 
 ### データ表示

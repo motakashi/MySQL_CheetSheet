@@ -1,7 +1,7 @@
 # MySQL_CheetSheet
 
-# データベース操作・テーブル操作
-## データベース操作
+## データベース操作・テーブル操作
+### データベース操作
 ```
 [vagrant@localhost mysql_lessons]$ mysql -u root
 mysql> show databases;
@@ -15,8 +15,8 @@ mysql> use mydb02;
 mysql> select database();
 ```
 
-## 作業用ユーザー設定
-### アカウント追加
+### 作業用ユーザー設定
+#### アカウント追加
 ```
 mysql> create user user@localhost identified by 'password';
 
@@ -33,14 +33,14 @@ mysql> show databases;
 mysql> quit;
 ```
 
-### アカウント追加
+#### アカウント追加
 ```
 [vagrant@localhost mysql_lessons]$ mysql -u root
 
 mysql> drop user user@localhost;
 ```
 
-## 外部ファイルからのコマンド実行
+### 外部ファイルからのコマンド実行
 ```
 # パターン1
 [vagrant@localhost mysql_lessons]$ mysql -u root < anotherfile_database.sql
@@ -51,8 +51,8 @@ mysql> quit;
 [vagrant@localhost mysql_lessons]$ mysql -u root
 mysql> \. ./anotherfile_database.sql
 ```
-## テーブル操作
-### テーブル作成・削除
+### テーブル操作
+#### テーブル作成・削除
 ```
 [vagrant@localhost mysql_lessons]$ mysql -u myapp_user -p
 
@@ -68,7 +68,7 @@ mysql> desc users;
 mysql> drop table users;
 ```
 
-### テーブル作成
+#### テーブル作成
 ```
 create table users (
   id int unsigned primary key auto_increment,
@@ -82,7 +82,7 @@ create table users (
 );
 ```
 
-### データ挿入
+#### データ挿入
 ```
 insert into users (id, name, score) values (1, 'motakashi', 2.0);
 
@@ -90,7 +90,7 @@ insert into users (id, name, score) values (1, 'motakashi', 2.0);
 insert into comments (post_id, body) values (last_insert_id(), 'first comment for new post');
 ```
 
-### テーブル構造の変更
+#### テーブル構造の変更
 ```
 # カラムの追加
 alter table users add column email varchar(255) after name;
@@ -105,7 +105,7 @@ alter table users change name user_name varchar(80) default 'nobody';
 alter table users rename persons;
 ```
 
-### レコードの更新
+#### レコードの更新
 ```
 update users set name = 'sasaki', score = 2.9 where name = 'tanaka';
 
@@ -117,19 +117,19 @@ update posts set updated = date_add(updated, interval 14 day) where id = 2;
 update posts set updated = date_add(updated, interval 2 week) where id = 2;
 ```
 
-### レコードの削除
+#### レコードの削除
 ```
 delete from users where score < 5.0;
 ```
 
-## トランザクション処理(一連の処理として実行したい場合)
+### トランザクション処理(一連の処理として実行したい場合)
 ```
 start transaction;
 (処理に問題がなければ)commit;
 (処理に問題があれば)rollback;
 ```
 
-## インデックスの作成・削除
+### インデックスの作成・削除
 ```
 alter table <テーブル名> add index <インデックス名> (<インデックスをつけたいカラム名>);
 
@@ -143,7 +143,7 @@ explain select * from users where score > 5.0;
 alter table <テーブル名> drop index <インデックス名>;
 ```
 
-## テーブル間の不整合データを防ぐ（外部制約キー）
+### テーブル間の不整合データを防ぐ（外部制約キー）
 ```
 alter table <制約をつけたいテーブル名> add constraint fk_comments foreign key (<制約をつけたいカラム名>) references <紐づけるテーブル名> (<紐づけるカラム名>);
 
@@ -151,7 +151,7 @@ alter table <制約をつけたいテーブル名> add constraint fk_comments fo
 SHOW CREATE TABLE <テーブル名>;
 ```
 
-## DB操作があった時に処理させる（trigger）
+### DB操作があった時に処理させる（trigger）
 ```
 # トリガー作成（処理後実行）
 create trigger <トリガー名> after [insert|update|delete] on <監視するテーブル名> for each row insert into logs (msg) values ('post added!');
@@ -176,7 +176,7 @@ create trigger posts_update_trigger after update on posts for each row
 delimiter ;
 ```
 
-## データベースのバックアップ
+### データベースのバックアップ
 ```
 # バックアップデータの作成
 [vagrant@localhost mysql_lessons]$ mysqldump -u myapp_user -p myapp > myapp.backup.sql

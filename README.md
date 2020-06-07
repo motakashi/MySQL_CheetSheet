@@ -354,4 +354,14 @@ show triggers \G;
 
 # トリガーの削除
 drop trigger if exists posts_insert_trigger;
+
+# 複雑なトリガー
+delimiter //
+create trigger posts_update_trigger after update on posts for each row
+  begin
+    insert into logs (msg) values ('post updated!');
+    insert into logs (msg) values (concat(old.title, ' -> ', new.title));
+  end;
+//
+delimiter ;
 ```

@@ -341,3 +341,17 @@ alter table <制約をつけたいテーブル名> add constraint fk_comments fo
 SHOW CREATE TABLE <テーブル名>;
 ```
 
+### DB操作があった時に処理させる（trigger）
+```
+# トリガー作成（処理後実行）
+create trigger <トリガー名> after [insert|update|delete] on <監視するテーブル名> for each row insert into logs (msg) values ('post added!');
+
+# トリガー作成（実行前実行）
+create trigger <トリガー名> before [insert|update|delete] on <監視するテーブル名> for each row insert into logs (msg) values ('post added!');
+
+# トリガー内容の確認
+show triggers \G;
+
+# トリガーの削除
+drop trigger if exists posts_insert_trigger;
+```

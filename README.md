@@ -76,6 +76,8 @@ create table users (
   score float default 0.0
   rank enum('gold', 'silver', 'bronze')
   coins set('gold', 'silver', 'bronze')
+  created datetime default current_timestamp   // 現在時刻の取得
+  updated datetime default current_timestamp on update current_timestamp  // 現在時刻の取得（更新時刻も反映）
 );
 ```
 
